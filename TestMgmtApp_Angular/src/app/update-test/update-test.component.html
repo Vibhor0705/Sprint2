@@ -1,0 +1,55 @@
+<h1>Update Test Form</h1>  
+<form #formdata="ngForm" 
+(ngSubmit)="formdata.valid && updateTest(formdata)">
+
+<div>
+    <label>Test Id</label><br>
+    <input type="text" ngModel name="testId" class="form-control" required
+    ngModel #testId="ngModel" >
+</div>
+
+<div *ngIf="testId.errors!=null && testId.errors.required">
+    Test Id is required.
+</div>
+ <div>
+     <label>Test title</label><br>
+     <input type="text" ngModel name="testTitle" class="form-control" required minlength="2"
+     ngModel #testTitle="ngModel" >
+</div>
+
+<div *ngIf="testTitle.errors!=null && testTitle.errors.required">
+     Test Title is required.
+</div>
+
+<div *ngIf="testTitle.errors!=null && testTitle.errors.minlength">
+     minimum length should be 2
+</div> 
+<br>
+<div>    
+     <label>Test Total Marks</label><br>
+     <input type="number" name="testTotalMarks"
+     class="form-control" required
+      ngModel #testTotalMarks="ngModel">
+</div>
+
+<div *ngIf="testTotalMarks.errors!=null && testTotalMarks.errors.required">
+     test Total Marks is required.
+</div>
+
+<br>
+
+<input type="submit" value="Update Test" >
+
+</form>
+
+ 
+<div *ngIf="updatedTest!=null">
+<h3>Test Updated
+</h3>
+testId = {{updatedTest.testId}}
+<br>
+testTitle = {{updatedTest.testTitle}}
+<br>
+testTotalMarks = {{updatedTest.testTotalMarks}}
+
+</div> 
